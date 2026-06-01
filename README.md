@@ -34,3 +34,14 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## CI / CD and Testing
+
+- **Continuous Integration**: A GitHub Actions workflow runs on PRs and pushes to `main`/`master`. It lints, type-checks, runs tests, and builds the app. See `.github/workflows/ci.yml`.
+- **Deploy to Vercel**: A template workflow `.github/workflows/deploy-vercel.yml` is included — add `VERCEL_TOKEN`, `VERCEL_ORG_ID`, and `VERCEL_PROJECT_ID` to the repository secrets to enable automatic deploys on push to `main`.
+- **Container Publishing**: A workflow publishes a Docker image to GitHub Container Registry on push to `main` (`.github/workflows/publish-ghcr.yml`).
+- **Run tests locally**: Install deps then run `npm run test` or `npm run test:ci` for coverage.
+- **Typecheck locally**: `npm run typecheck`.
+- **Format**: `npm run format` uses Prettier to format the codebase.
+
+If you'd like, I can also wire up additional checks (Cypress E2E, Playwright, security scanning), or create a deployment workflow for another provider.
